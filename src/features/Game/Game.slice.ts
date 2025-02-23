@@ -4,6 +4,7 @@ import { WordQuestion } from "../../types";
 const LIFES_COUNT_DEFAULT = 10;
 
 const initialState = {
+  gameId: undefined as string | undefined,
   lifes: LIFES_COUNT_DEFAULT,
   question: "",
   word: [] as string[],

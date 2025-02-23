@@ -3,6 +3,7 @@ import { Result } from "../../types";
 
 const initialState = {
   results: [] as Result[],
+  currentGame: undefined as Result | undefined,
 };
 
 type StateType = typeof initialState;
