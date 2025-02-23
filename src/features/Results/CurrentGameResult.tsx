@@ -9,9 +9,13 @@ export const CurrentGameResult = () => {
   const appState = useAppSelector(appSelector);
   const resultsState = useAppSelector(resultsSelector);
 
+  const currentResult = appState.currentGameId
+    ? resultsState.results[appState.currentGameId]
+    : undefined;
+
   const dispatch = useAppDispatch();
 
-  if (appState.currentGameId) {
+  if (currentResult) {
     return <span>Current game id: {appState.currentGameId}</span>;
   }
 

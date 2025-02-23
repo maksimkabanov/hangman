@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { RootState, useAppSelector } from "../../store";
-import { LettersBoard } from "./LettersBoard/LettersBoard";
+import { LettersBoard } from "./LettersBoard";
+import { GameWord } from "./GameWord";
 
 export const gameSelector = (state: RootState) => state.game;
 
@@ -15,8 +16,11 @@ export const Game = () => {
     return getHost(<span>No current game. Start a new one!</span>);
 
   return (
-    <div className="w-full h-full flex flex-col">
-      <div>{gameState.question}</div>
+    <div className="w-full h-full flex flex-col gap-2">
+      <h2 className="w-full text-center text-2xl text-blue-500">
+        {gameState.question}
+      </h2>
+      <GameWord />
       <LettersBoard />
     </div>
   );

@@ -6,7 +6,7 @@ import { Results } from "./features/Results/Results";
 function App() {
   return (
     <div className="flex flex-col items-center min-h-screen">
-      <div className="border-bottom w-full text-center p-2">
+      <div className="text-gray-300 border-bottom w-full text-center p-2">
         Hello in Hangman by Maksim!
       </div>
       <div className="flex flex-row flex-1 w-full p-2">

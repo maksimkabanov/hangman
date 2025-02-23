@@ -1,5 +1,9 @@
 import { appSlice } from "./app.slice";
-import { WODR_QUESTIONS } from "./constants";
+import {
+  WODR_QUESTIONS,
+  WODR_QUESTIONS_IDS,
+  WODR_QUESTIONS_MAP,
+} from "./constants";
 import { gameSlice } from "./features/Game/Game.slice";
 import { resultsSlice } from "./features/Results/Results.slice";
 import { AppDispatch, RootState } from "./store";
@@ -27,7 +31,18 @@ export const startNewGame =
     if (notFinishedId) return dispatch(setGame(notFinishedId));
 
     const passedGamesIdsSet = new Set(Object.keys(rootState.results.results));
-    const newGame = WODR_QUESTIONS.find((q) => !passedGamesIdsSet.has(q.id));
+    const unusedIds = WODR_QUESTIONS_IDS.filter(
+      (id) => !passedGamesIdsSet.has(id)
+    );
+    if (unusedIds.length === 0) {
+      return;
+    }
+    const newGameIdIndex = Math.round((unusedIds.length - 1) * Math.random());
+    const newGameId = unusedIds[newGameIdIndex];
+    const newGame = WODR_QUESTIONS_MAP[newGameId];
+
+    console.log("NEW GAME", newGame);
+
     if (!newGame) return;
     const newResult: Result = {
       gameId: newGame.id,
