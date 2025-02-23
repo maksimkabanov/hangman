@@ -13,3 +13,7 @@ export interface Result {
   success: boolean;
   fail: boolean;
 }
+
+export interface LocalStorageItem {
+  results: { [gameId: string]: Result };
+}

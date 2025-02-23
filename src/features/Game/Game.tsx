@@ -22,6 +22,9 @@ export const Game = () => {
       </h2>
       <GameWord />
       <LettersBoard />
+      <h2 className="w-full text-right text-green-500">
+        Lifes left: {gameState.lifes}
+      </h2>
     </div>
   );
 };

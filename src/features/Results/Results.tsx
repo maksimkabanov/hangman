@@ -16,14 +16,18 @@ export const Results = () => {
   );
 
   return (
-    <div className="h-full flex flex-col gap-2">
+    <div className="h-full flex flex-col gap-2 items-center">
       <div className="text-center border-bottom">
-        Tottal games: {resultsArray.length}
+        Games finished: {resultsArray.length}
       </div>
       <CurrentGameResult />
-      {resultsArray.map((result) => (
-        <GameResult key={result.gameId} result={result} />
-      ))}
+      <div className="flex-1">
+        <div className="flex flex-col gap-2 h-full overflow-auto">
+          {resultsArray.map((result) => (
+            <GameResult key={result.gameId} result={result} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

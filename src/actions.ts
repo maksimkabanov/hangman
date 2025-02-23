@@ -3,7 +3,7 @@ import { WODR_QUESTIONS_IDS, WODR_QUESTIONS_MAP } from "./constants";
 import { gameSlice } from "./features/Game/Game.slice";
 import { resultsSlice } from "./features/Results/Results.slice";
 import { AppDispatch, RootState } from "./store";
-import { Result } from "./types";
+import { LocalStorageItem, Result } from "./types";
 
 const LIFES_COUNT_MAX = 5;
 
@@ -77,3 +77,42 @@ export const guessLetter =
       })
     );
   };
+
+export const restoreResultesFromStorage =
+  () => (dispatch: AppDispatch, _getState: () => RootState) => {
+    const item = loadFromLocalStorage();
+    if (item) dispatch(resultsSlice.actions.restoreResults(item));
+    dispatch(checkExistingGame());
+  };
+
+export const checkExistingGame =
+  () => (dispatch: AppDispatch, getState: () => RootState) => {
+    const results = getState().results.results ?? {};
+    const existingGame = Object.values(results).find(
+      (g) => !g.success && !g.fail
+    );
+    if (existingGame) dispatch(setGame(existingGame.gameId));
+  };
+
+const LOCAL_STORAGE_KEY = "HANGMAN_RESULTS";
+
+const loadFromLocalStorage = () => {
+  try {
+    const jsonValue = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const item: LocalStorageItem = jsonValue
+      ? JSON.parse(jsonValue)
+      : undefined;
+    return item;
+  } catch (error) {
+    console.error("Error reading from localStorage", error);
+    return undefined;
+  }
+};
+export const saveToLocalStorage = (item: LocalStorageItem) => {
+  try {
+    const jsonValue = JSON.stringify(item);
+    localStorage.setItem(LOCAL_STORAGE_KEY, jsonValue);
+  } catch (error) {
+    console.error("Error saving to localStorage", error);
+  }
+};

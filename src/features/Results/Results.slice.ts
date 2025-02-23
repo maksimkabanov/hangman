@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Result } from "../../types";
+import { LocalStorageItem, Result } from "../../types";
 import { RootState } from "../../store";
+import { saveToLocalStorage } from "../../actions";
 
 export const resultsSelector = (state: RootState) => state.results;
 
@@ -16,6 +17,7 @@ export const resultsSlice = createSlice({
   reducers: {
     addResult: (state: StateType, action: PayloadAction<Result>) => {
       state.results[action.payload.gameId] = action.payload;
+      saveToLocalStorage(state);
     },
     updateResult: (
       state: StateType,
@@ -26,7 +28,14 @@ export const resultsSlice = createSlice({
           ...state.results[action.payload.gameId],
           ...action.payload,
         };
+        saveToLocalStorage(state);
       }
+    },
+    restoreResults: (
+      state: StateType,
+      action: PayloadAction<LocalStorageItem>
+    ) => {
+      state.results = action.payload.results;
     },
   },
 });

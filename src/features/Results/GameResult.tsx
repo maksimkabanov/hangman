@@ -1,10 +1,27 @@
 import React from "react";
 import { Result } from "../../types";
+import clsx from "clsx";
 
 export const GameResult = ({ result }: { result: Result }) => {
+  const gameIsDone = result.success || result.fail;
+  const correctLetters = result.lettersUsed.filter(
+    (l) => result.word.indexOf(l) > -1
+  );
+
   return (
-    <div className="flex flex-col">
-      <div>{JSON.stringify(result)}</div>
+    <div
+      className={clsx(
+        "flex flex-col gap-1 w-[300px] p-2 border border-gray-200",
+        result.success && "bg-green-100",
+        result.fail && "bg-red-100"
+      )}
+    >
+      <div className="text-center italic">{result.question}</div>
+      {gameIsDone && <div className="text-center italic">({result.word})</div>}
+      <div>
+        Correct: {correctLetters.length} / Wrong:{" "}
+        {result.lettersUsed.length - correctLetters.length}
+      </div>
     </div>
   );
 };
