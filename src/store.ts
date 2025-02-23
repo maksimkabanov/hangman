@@ -1,10 +1,14 @@
 import { ThunkAction, configureStore, Action } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { appSlice } from "./app.slice";
+import { gameSlice } from "./features/Game/Game.slice";
+import { resultsSlice } from "./features/Results/Results.slice";
 
 export const store = configureStore({
   reducer: {
     app: appSlice.reducer,
+    game: gameSlice.reducer,
+    results: resultsSlice.reducer,
   },
 });
 

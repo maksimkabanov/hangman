@@ -1,0 +1,402 @@
+[
+  {
+    "id": "ced41d6b-db90-4166-8ef4-3c15cad59faf",
+    "question": "What fruit is red or green and grows on trees?",
+    "word": "apple"
+  },
+  {
+    "id": "8eea5036-76dd-46f6-8e2d-a7ceffb898ae",
+    "question": "What yellow fruit is long and curved?",
+    "word": "banana"
+  },
+  {
+    "id": "149ef8ec-66ba-4a04-b940-e567f665dad1",
+    "question": "What fruit is round, orange, and full of vitamin C?",
+    "word": "orange"
+  },
+  {
+    "id": "baa3b28f-628b-4da5-bf99-4f800d9dac70",
+    "question": "What small fruit grows in bunches and is used to make wine?",
+    "word": "grapes"
+  },
+  {
+    "id": "aa67759d-8cc3-4b95-b466-37d689527583",
+    "question": "What structure is used to cross a river?",
+    "word": "bridge"
+  },
+  {
+    "id": "2f71ade7-225a-4cba-b5fd-c1e28fd32a87",
+    "question": "What place do children go to learn?",
+    "word": "school"
+  },
+  {
+    "id": "b95e615d-8d8d-402f-aa8a-38c5e203928b",
+    "question": "What is a large area covered with trees?",
+    "word": "forest"
+  },
+  {
+    "id": "911e44d4-7bf2-44ae-95f1-8740ed360149",
+    "question": "What is a dry, sandy area with little water?",
+    "word": "desert"
+  },
+  {
+    "id": "8152b931-5a36-40cf-95cb-cfe7a99d4ee4",
+    "question": "What is a large object that orbits a star?",
+    "word": "planet"
+  },
+  {
+    "id": "3e8552fb-d78a-4ad8-9172-1eb3b82653fc",
+    "question": "What vehicle is used to travel to space?",
+    "word": "rocket"
+  },
+  {
+    "id": "adb03c64-83fb-4480-af14-d601d456dd45",
+    "question": "What is a light and gentle wind?",
+    "word": "breeze"
+  },
+  {
+    "id": "3211865c-beef-4552-ba0e-424a2669e598",
+    "question": "What seat does a king or queen sit on?",
+    "word": "throne"
+  },
+  {
+    "id": "4aaa17ae-63d4-4450-a926-6a36298da888",
+    "question": "What is a portable computer?",
+    "word": "laptop"
+  },
+  {
+    "id": "ab44c540-d1f6-4de9-8c80-02da2facd258",
+    "question": "What place is used to grow plants and flowers?",
+    "word": "garden"
+  },
+  {
+    "id": "b0d01629-ecdb-4e15-bb6b-d9e85ab12e8a",
+    "question": "What device is used to take photos?",
+    "word": "camera"
+  },
+  {
+    "id": "2187de7c-8c3a-4a33-bd84-a44ede13cc8e",
+    "question": "What musical instrument has strings and is played by strumming?",
+    "word": "guitar"
+  },
+  {
+    "id": "871c160a-0e51-44d1-82cd-865f9e8b6170",
+    "question": "What land is surrounded by water?",
+    "word": "island"
+  },
+  {
+    "id": "7d772811-5891-471e-8e13-e44c379ef78d",
+    "question": "What small object is used to carry money and cards?",
+    "word": "wallet"
+  },
+  {
+    "id": "838894d3-b887-477e-9fae-f11792ec819f",
+    "question": "What object lets people see outside from inside a building?",
+    "word": "window"
+  },
+  {
+    "id": "50027592-f386-42b2-9cb1-14e6d6606544",
+    "question": "What container holds liquids like water or soda?",
+    "word": "bottle"
+  },
+  {
+    "id": "8603fa97-77dc-4ab7-b435-04fb32ce7f5f",
+    "question": "What writing tool is made of wood and graphite?",
+    "word": "pencil"
+  },
+  {
+    "id": "8363dd2b-95b3-40c7-948a-eacf33057db3",
+    "question": "What word describes a person who is well known?",
+    "word": "famous"
+  },
+  {
+    "id": "cfa9de05-99aa-4504-a7cf-167015c5c61a",
+    "question": "What word describes someone who is kind and careful?",
+    "word": "gentle"
+  },
+  {
+    "id": "2c937acf-9e97-433d-a4d3-e65ba15a52ff",
+    "question": "What person helps sick people get better?",
+    "word": "doctor"
+  },
+  {
+    "id": "27793216-8c8d-4112-97fd-c491c18be7b0",
+    "question": "What person assists doctors in hospitals?",
+    "word": "nurse"
+  },
+  {
+    "id": "696a5c98-e99a-4103-b323-8b06c3433555",
+    "question": "What person helps keep people safe and enforces laws?",
+    "word": "police"
+  },
+  {
+    "id": "40f8d22e-66c4-439f-94b2-3bf3796a918b",
+    "question": "What place has books available for reading and borrowing?",
+    "word": "library"
+  },
+  {
+    "id": "3a5a7713-caad-4567-8f65-c681bd6dc091",
+    "question": "What is the time of day when the sun rises?",
+    "word": "morning"
+  },
+  {
+    "id": "91cf4adf-8b91-4a8d-9dac-d5b306d73db6",
+    "question": "What is the time of day when the sun sets?",
+    "word": "evening"
+  },
+  {
+    "id": "edd093dc-9343-4b1c-8eed-6243bffc6913",
+    "question": "What soft covering is used to keep warm while sleeping?",
+    "word": "blanket"
+  },
+  {
+    "id": "2dab0d59-880e-4b63-83e9-df0b6b38ae34",
+    "question": "What room in a house is used for cooking?",
+    "word": "kitchen"
+  },
+  {
+    "id": "61cb8d5e-e751-4fb1-b382-3c265a129c7d",
+    "question": "What device is used to print documents?",
+    "word": "printer"
+  },
+  {
+    "id": "5871d29b-93f3-4e55-ae3f-e3523c772027",
+    "question": "What part of a house lets smoke escape from a fireplace?",
+    "word": "chimney"
+  },
+  {
+    "id": "37f32768-df68-40bb-8889-1c4a7d4b8001",
+    "question": "What vehicle has two wheels and is powered by pedaling?",
+    "word": "bicycle"
+  },
+  {
+    "id": "5f801448-c53a-467a-9fc0-6f66095dd61b",
+    "question": "What object is filled with air and floats in the sky?",
+    "word": "balloon"
+  },
+  {
+    "id": "96c825b8-91fc-42ce-90b9-31904d4b84b6",
+    "question": "What precious stone is very hard and valuable?",
+    "word": "diamond"
+  },
+  {
+    "id": "f62f68e9-ae36-4e75-a312-da9b31455a05",
+    "question": "What object is used to carry light, often outdoors?",
+    "word": "lantern"
+  },
+  {
+    "id": "7aac3f06-08f0-4678-a4e7-c58d34594297",
+    "question": "What place is used for watching plays and performances?",
+    "word": "theater"
+  },
+  {
+    "id": "54a3cc35-6baa-480a-8f56-ff5eee59390c",
+    "question": "What person moves from place to place for exploration?",
+    "word": "traveler"
+  },
+  {
+    "id": "47683c9e-13d5-4600-928f-666546e8fed1",
+    "question": "What object is used to protect from rain?",
+    "word": "umbrella"
+  },
+  {
+    "id": "6c9d04b2-275f-42ac-ade1-287b82e1cdc7",
+    "question": "What event is held for celebration and entertainment?",
+    "word": "festival"
+  },
+  {
+    "id": "d7d52643-cc6f-408a-bb36-d2e0a3e117df",
+    "question": "What tool shows the days, weeks, and months of a year?",
+    "word": "calendar"
+  },
+  {
+    "id": "19d77305-509a-459b-a054-c0e9b85e8864",
+    "question": "What large natural structure rises high above the land?",
+    "word": "mountain"
+  },
+  {
+    "id": "1223d5f0-06fc-4471-92f7-05255b1a0477",
+    "question": "What food consists of bread with filling inside?",
+    "word": "sandwich"
+  },
+  {
+    "id": "fe995415-e0c1-4128-a0c3-599b94e5cf80",
+    "question": "What small vehicle has two wheels and is used for riding?",
+    "word": "scooter"
+  },
+  {
+    "id": "5c7aac9d-ba8f-4ec7-92e1-5ec87b9faec5",
+    "question": "What bag is worn on the back and used to carry things?",
+    "word": "backpack"
+  },
+  {
+    "id": "f5eb0a6f-b035-45a2-8bf3-ce29ce3ae5c0",
+    "question": "What object explodes in the sky with colors and lights?",
+    "word": "firework"
+  },
+  {
+    "id": "38d3eca1-2fa3-4d23-af89-531a1dd4c9ab",
+    "question": "What small object makes a high-pitched sound when blown?",
+    "word": "whistle"
+  },
+  {
+    "id": "b22ee46a-fbaa-40f8-aa99-778b6c4c5597",
+    "question": "What device is used to see faraway objects like stars?",
+    "word": "telescope"
+  },
+  {
+    "id": "cf9adbbd-ac84-4ba6-b274-27e021fd886d",
+    "question": "What large vehicle flies in the sky and carries people?",
+    "word": "airplane"
+  },
+  {
+    "id": "bb83df3f-d52a-4fe6-a4b6-6a4e1c7c6fea",
+    "question": "What building is used for treating sick or injured people?",
+    "word": "hospital"
+  },
+  {
+    "id": "3eb96417-4e39-4fd8-8d52-9ef1d9893416",
+    "question": "What person writes music?",
+    "word": "composer"
+  },
+  {
+    "id": "2f9d3046-ec52-4652-8cfe-85920e2ba874",
+    "question": "What system of communication is used by people?",
+    "word": "language"
+  },
+  {
+    "id": "f62c63ea-99aa-4dac-a989-6b67001e05a1",
+    "question": "What type of artwork is made using colors on a surface?",
+    "word": "painting"
+  },
+  {
+    "id": "b255b7ed-93d5-4099-9093-1caed1a05b26",
+    "question": "What large animal has a trunk and big ears?",
+    "word": "elephant"
+  },
+  {
+    "id": "714c4ffd-392f-4529-bcc6-2a6617e3d505",
+    "question": "What device is used to type letters on a computer?",
+    "word": "keyboard"
+  },
+  {
+    "id": "14b72f5e-5dff-4c0c-9402-f4c3e0bdc2f3",
+    "question": "What piece of jewelry is worn around the neck?",
+    "word": "necklace"
+  },
+  {
+    "id": "cb9c736d-f68b-415d-9d9c-d21effea82ee",
+    "question": "What document is needed to travel to another country?",
+    "word": "passport"
+  },
+  {
+    "id": "47d55c43-b436-4736-a61a-2793e3d84720",
+    "question": "What person fights in a war or serves in an army?",
+    "word": "soldier"
+  },
+  {
+    "id": "4f7b22cb-3680-4df0-bbd9-fc8687c20017",
+    "question": "What mountain erupts with lava?",
+    "word": "volcano"
+  },
+  {
+    "id": "90df8c97-aa82-4cdf-9c45-d8d83e3b8095",
+    "question": "What natural phenomenon shows colors after rain?",
+    "word": "rainbow"
+  },
+  {
+    "id": "ac6bfcbf-3098-4d13-b8b1-9fab8785bf8b",
+    "question": "What shape has three sides?",
+    "word": "triangle"
+  },
+  {
+    "id": "73242000-55fa-4cbd-8b77-253063304b97",
+    "question": "What is speaking very softly so others barely hear?",
+    "word": "whisper"
+  },
+  {
+    "id": "bf48b339-6dca-4a23-a39f-ff59cd62ce3c",
+    "question": "What mythical creature is half human and half fish?",
+    "word": "mermaid"
+  },
+  {
+    "id": "e086fd10-b7d1-4853-956a-8d8082d8d159",
+    "question": "What furniture is used to store dishes and food?",
+    "word": "cupboard"
+  },
+  {
+    "id": "503b5cf1-1271-4e33-84c2-5fe755f5fa88",
+    "question": "What concept means fairness and lawfulness?",
+    "word": "justice"
+  },
+  {
+    "id": "c4a5152f-8c93-4ed5-b29b-459848b96edc",
+    "question": "What do people wear to cover their bodies?",
+    "word": "clothing"
+  },
+  {
+    "id": "f2b3b5d0-53e0-4cc8-b4b3-0f70d943e8ff",
+    "question": "What valuable object is hidden and searched for?",
+    "word": "treasure"
+  },
+  {
+    "id": "42383ece-64aa-4ac4-a15e-b454920a2c11",
+    "question": "What global system connects computers worldwide?",
+    "word": "internet"
+  },
+  {
+    "id": "072cc278-b78e-4bd9-a9e4-f81c630298f2",
+    "question": "What person travels to discover new places?",
+    "word": "explorer"
+  },
+  {
+    "id": "5f6df5a4-bb20-4ed1-960c-bd6be6a7aa07",
+    "question": "What large event is held for celebration?",
+    "word": "festival"
+  },
+  {
+    "id": "a6579684-7651-480e-beef-58a4a629bb51",
+    "question": "What tool is used to cut paper?",
+    "word": "scissors"
+  },
+  {
+    "id": "5cbd4d06-9ae1-44dc-ac0e-084ad545c696",
+    "question": "What hard, valuable gemstone is often used in rings?",
+    "word": "diamond"
+  },
+  {
+    "id": "dbfb5e9f-3eb0-4aa4-985a-87c634667be1",
+    "question": "What spinning storm has strong winds?",
+    "word": "tornado"
+  },
+  {
+    "id": "ff12078b-1dc7-490c-84dc-9fa09abd0851",
+    "question": "What time off from work or school is used for rest?",
+    "word": "vacation"
+  },
+  {
+    "id": "2ddfad68-ef18-4689-9971-cc4b57e50777",
+    "question": "What small device makes a sound when blown?",
+    "word": "whistle"
+  },
+  {
+    "id": "087d0baf-5f8d-42ca-8f17-9bc8f22c0409",
+    "question": "What sudden flash of electricity occurs during storms?",
+    "word": "lightning"
+  },
+  {
+    "id": "a10bf854-5c58-4874-ae5b-7f4199d55a76",
+    "question": "What exciting experience involves risk or exploration?",
+    "word": "adventure"
+  },
+  {
+    "id": "ac9c5b0d-241a-4377-8e12-fa27e0a785a1",
+    "question": "What person designs and builds machines or structures?",
+    "word": "engineer"
+  },
+  {
+    "id": "a9d5deec-8646-465f-b0df-586314313ea5",
+    "question": "What is speaking very softly so others barely hear?",
+    "word": "whisper"
+  }
+]
