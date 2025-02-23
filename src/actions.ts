@@ -1,13 +1,11 @@
 import { appSlice } from "./app.slice";
-import {
-  WODR_QUESTIONS,
-  WODR_QUESTIONS_IDS,
-  WODR_QUESTIONS_MAP,
-} from "./constants";
+import { WODR_QUESTIONS_IDS, WODR_QUESTIONS_MAP } from "./constants";
 import { gameSlice } from "./features/Game/Game.slice";
 import { resultsSlice } from "./features/Results/Results.slice";
 import { AppDispatch, RootState } from "./store";
 import { Result } from "./types";
+
+const LIFES_COUNT_MAX = 5;
 
 export const setGame =
   (gameId: string) => (dispatch: AppDispatch, getState: () => RootState) => {
@@ -43,10 +41,15 @@ export const startNewGame =
 
     console.log("NEW GAME", newGame);
 
+    const lifes =
+      newGame.word.length > LIFES_COUNT_MAX
+        ? LIFES_COUNT_MAX
+        : newGame.word.length;
+
     if (!newGame) return;
     const newResult: Result = {
       gameId: newGame.id,
-      lifes: newGame.word.length,
+      lifes,
       question: newGame.question,
       word: newGame.word,
       lettersUsed: [],
@@ -55,4 +58,22 @@ export const startNewGame =
     };
     dispatch(resultsSlice.actions.addResult(newResult));
     dispatch(setGame(newResult.gameId));
+  };
+
+export const guessLetter =
+  (letter: string) => (dispatch: AppDispatch, getState: () => RootState) => {
+    dispatch(gameSlice.actions.guessLetter(letter));
+
+    const rootState = getState();
+    const { gameId, lifes, lettersUsed, success, fail } = rootState.game;
+
+    dispatch(
+      resultsSlice.actions.updateResult({
+        gameId,
+        lifes,
+        lettersUsed,
+        success,
+        fail,
+      })
+    );
   };

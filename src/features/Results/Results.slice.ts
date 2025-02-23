@@ -17,5 +17,16 @@ export const resultsSlice = createSlice({
     addResult: (state: StateType, action: PayloadAction<Result>) => {
       state.results[action.payload.gameId] = action.payload;
     },
+    updateResult: (
+      state: StateType,
+      action: PayloadAction<Partial<Result>>
+    ) => {
+      if (action.payload.gameId) {
+        state.results[action.payload.gameId] = {
+          ...state.results[action.payload.gameId],
+          ...action.payload,
+        };
+      }
+    },
   },
 });

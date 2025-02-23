@@ -15,8 +15,20 @@ export const CurrentGameResult = () => {
 
   const dispatch = useAppDispatch();
 
-  if (currentResult) {
-    return <span>Current game id: {appState.currentGameId}</span>;
+  if (currentResult && !currentResult.fail && !currentResult.success) {
+    return (
+      <div className="flex flex-col gap-1">
+        <span>Lifes left: {currentResult.lifes}</span>
+        <span>Tries: {currentResult.lettersUsed.length}</span>
+        <span>
+          {currentResult.success
+            ? "SUCCESS"
+            : currentResult.fail
+            ? "FAILED"
+            : "PLAYING"}
+        </span>
+      </div>
+    );
   }
 
   const onNewGameClick = () => {

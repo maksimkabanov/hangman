@@ -9,8 +9,10 @@ function App() {
       <div className="text-gray-300 border-bottom w-full text-center p-2">
         Hello in Hangman by Maksim!
       </div>
-      <div className="flex flex-row flex-1 w-full p-2">
-        <Game />
+      <div className="flex flex-row flex-1 w-full">
+        <div className="flex-1 min-w-[400px] p-2">
+          <Game />
+        </div>
         <div className="border-left min-w-[400px] p-2">
           <Results />
         </div>

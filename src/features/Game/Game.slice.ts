@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Result } from "../../types";
 
-const LIFES_COUNT_DEFAULT = 10;
-
 const initialState = {
   gameId: undefined as string | undefined,
-  lifes: LIFES_COUNT_DEFAULT,
+  lifes: 0,
   question: "",
   word: [] as string[],
   lettersUsed: [] as string[],

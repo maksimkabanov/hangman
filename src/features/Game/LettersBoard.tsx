@@ -1,6 +1,5 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { gameSlice } from "./Game.slice";
 import { gameSelector } from "./Game";
 import { Button } from "@mui/material";
 import {
@@ -9,14 +8,15 @@ import {
   LETTERS_ARRAY,
   SUCCESS_COLOR,
 } from "../../constants";
+import { guessLetter } from "../../actions";
 
 export const LettersBoard = () => {
   const dispatch = useAppDispatch();
 
   const gameState = useAppSelector(gameSelector);
 
-  const guessLetter = (letter: string) => {
-    dispatch(gameSlice.actions.guessLetter(letter));
+  const onGuessLetterClick = (letter: string) => {
+    dispatch(guessLetter(letter));
   };
 
   const isLetterUsed = (letter: string) =>
@@ -40,7 +40,7 @@ export const LettersBoard = () => {
           <Button
             key={letter}
             className="letter-button"
-            onClick={() => guessLetter(letter)}
+            onClick={() => onGuessLetterClick(letter)}
             disabled={gameIsDone || letterUsed}
             sx={{
               "&.Mui-disabled": {

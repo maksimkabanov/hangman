@@ -10,6 +10,6 @@ export interface Result {
   question: string;
   word: string;
   lettersUsed: string[];
-  success: false;
-  fail: false;
+  success: boolean;
+  fail: boolean;
 }
