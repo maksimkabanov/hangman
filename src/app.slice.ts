@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "./store";
+
+export const appSelector = (state: RootState) => state.app;
 
 const initialState = {
+  currentGameId: undefined as string | undefined,
   playerName: "Ivan Ivanov",
 };
 
@@ -12,6 +16,9 @@ export const appSlice = createSlice({
   reducers: {
     changeName: (state: StateType, action: PayloadAction<string>) => {
       state.playerName = action.payload;
+    },
+    setGameId: (state: StateType, action: PayloadAction<string>) => {
+      state.currentGameId = action.payload;
     },
   },
 });

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { WordQuestion } from "../../types";
+import { Result } from "../../types";
 
 const LIFES_COUNT_DEFAULT = 10;
 
@@ -32,16 +32,14 @@ export const gameSlice = createSlice({
         state.success = true;
       }
     },
-    setGame: (state: StateType, action: PayloadAction<WordQuestion>) => {
-      state.success = false;
-      state.fail = false;
+    setResult: (state: StateType, action: PayloadAction<Result>) => {
+      state.gameId = action.payload.gameId;
+      state.success = action.payload.success;
+      state.fail = action.payload.fail;
       state.word = action.payload.word.toLowerCase().split("");
       state.question = action.payload.question;
-      state.lifes =
-        action.payload.word.length > LIFES_COUNT_DEFAULT
-          ? LIFES_COUNT_DEFAULT
-          : action.payload.word.length;
-      state.lettersUsed = [];
+      state.lifes = action.payload.lifes;
+      state.lettersUsed = action.payload.lettersUsed;
     },
   },
 });

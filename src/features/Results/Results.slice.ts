@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Result } from "../../types";
+import { RootState } from "../../store";
+
+export const resultsSelector = (state: RootState) => state.results;
 
 const initialState = {
-  results: [] as Result[],
-  currentGame: undefined as Result | undefined,
+  results: {} as { [gameId: string]: Result },
 };
 
 type StateType = typeof initialState;
@@ -13,7 +15,7 @@ export const resultsSlice = createSlice({
   initialState: initialState as StateType,
   reducers: {
     addResult: (state: StateType, action: PayloadAction<Result>) => {
-      state.results.push(action.payload);
+      state.results[action.payload.gameId] = action.payload;
     },
   },
 });

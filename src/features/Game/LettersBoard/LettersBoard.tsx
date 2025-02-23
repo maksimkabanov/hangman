@@ -1,9 +1,8 @@
-import { Button } from "@mui/material";
 import React from "react";
-import { useAppDispatch } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 import { gameSlice } from "../Game.slice";
-import { useSelector } from "react-redux";
 import { gameSelector } from "../Game";
+import { Button } from "@mui/material";
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const LETTERS_ARRAY = LETTERS.split("");
@@ -11,7 +10,7 @@ const LETTERS_ARRAY = LETTERS.split("");
 export const LettersBoard = () => {
   const dispatch = useAppDispatch();
 
-  const gameState = useSelector(gameSelector);
+  const gameState = useAppSelector(gameSelector);
 
   const guessLetter = (letter: string) => {
     dispatch(gameSlice.actions.guessLetter(letter));

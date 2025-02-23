@@ -1,7 +1,6 @@
-.header {
+.border-bottom {
   border-bottom: 1px solid #cccccc;
 }
-.results {
-  width: 400px;
+.border-left {
   border-left: 1px solid #cccccc;
 }

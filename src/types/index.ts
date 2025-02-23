@@ -6,6 +6,7 @@ export interface WordQuestion {
 
 export interface Result {
   gameId: string;
+  lifes: number;
   question: string;
   word: string;
   lettersUsed: string[];
