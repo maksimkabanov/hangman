@@ -21,7 +21,7 @@ export const Results = () => {
         Games finished: {resultsArray.length}
       </div>
       <CurrentGameResult />
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <div className="flex flex-col gap-2 h-full overflow-auto">
           {resultsArray.map((result) => (
             <GameResult key={result.gameId} result={result} />
