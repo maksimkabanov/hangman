@@ -55,6 +55,7 @@ export const startNewGame =
       lettersUsed: [],
       success: false,
       fail: false,
+      startTimestamp: Date.now(),
     };
     dispatch(resultsSlice.actions.addResult(newResult));
     dispatch(setGame(newResult.gameId));
@@ -74,8 +75,16 @@ export const guessLetter =
         lettersUsed,
         success,
         fail,
+        ...(success || fail ? { endTimestamp: Date.now() } : {}),
       })
     );
+  };
+
+export const resetAll =
+  () => (dispatch: AppDispatch, _getState: () => RootState) => {
+    dispatch(resultsSlice.actions.restoreResults({ results: {} }));
+    dispatch(appSlice.actions.setGameId(undefined));
+    saveToLocalStorage({ results: {} });
   };
 
 export const restoreResultesFromStorage =

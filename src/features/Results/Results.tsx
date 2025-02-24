@@ -9,9 +9,9 @@ export const Results = () => {
 
   const resultsArray = useMemo(
     () =>
-      Object.values(resultsState.results).filter(
-        (res) => res.fail || res.success
-      ),
+      Object.values(resultsState.results)
+        .sort((a, b) => (b.startTimestamp ?? 0) - (a.startTimestamp ?? 0))
+        .filter((res) => res.fail || res.success),
     [resultsState.results]
   );
 

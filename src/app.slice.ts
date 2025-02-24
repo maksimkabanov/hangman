@@ -17,7 +17,10 @@ export const appSlice = createSlice({
     changeName: (state: StateType, action: PayloadAction<string>) => {
       state.playerName = action.payload;
     },
-    setGameId: (state: StateType, action: PayloadAction<string>) => {
+    setGameId: (
+      state: StateType,
+      action: PayloadAction<string | undefined>
+    ) => {
       state.currentGameId = action.payload;
     },
   },

@@ -12,6 +12,8 @@ export interface Result {
   lettersUsed: string[];
   success: boolean;
   fail: boolean;
+  startTimestamp: number;
+  endTimestamp?: number;
 }
 
 export interface LocalStorageItem {

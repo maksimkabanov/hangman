@@ -1,6 +1,7 @@
 import React from "react";
 import { Result } from "../../types";
 import clsx from "clsx";
+import moment from "moment";
 
 export const GameResult = ({ result }: { result: Result }) => {
   const gameIsDone = result.success || result.fail;
@@ -22,6 +23,14 @@ export const GameResult = ({ result }: { result: Result }) => {
         Correct: {correctLetters.length} / Wrong:{" "}
         {result.lettersUsed.length - correctLetters.length}
       </div>
+      {result.endTimestamp && (
+        <div>
+          Time:{" "}
+          {moment
+            .utc(result.endTimestamp - result.startTimestamp)
+            .format("HH:mm:ss")}
+        </div>
+      )}
     </div>
   );
 };

@@ -39,5 +39,14 @@ export const gameSlice = createSlice({
       state.lifes = action.payload.lifes;
       state.lettersUsed = action.payload.lettersUsed;
     },
+    resetGame: (state: StateType) => {
+      state.gameId = initialState.gameId;
+      state.success = initialState.success;
+      state.fail = initialState.fail;
+      state.word = initialState.word;
+      state.question = initialState.question;
+      state.lifes = initialState.lifes;
+      state.lettersUsed = initialState.lettersUsed;
+    },
   },
 });
