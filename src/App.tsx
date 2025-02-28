@@ -52,10 +52,13 @@ function App() {
           <div className="flex-1 overflow-auto">
             <Game />
           </div>
+          <div className="absolute bottom-0 left-0 text-gray-200">
+            Version: 0.1.2
+          </div>
         </div>
 
         {/* Stats (visible on large screens) */}
-        <div className="hidden md:flex border-left p-2 min-w-[400px] h-full justify-center">
+        <div className="hidden md:flex border-left p-2 min-w-[300px] h-full justify-center">
           <Results />
         </div>
       </div>
@@ -65,7 +68,7 @@ function App() {
         className={`fixed top-0 right-0 h-full bg-gray-900 text-white shadow-md transform ${
           showSidebar ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out md:hidden overflow-y-auto flex justify-center`}
-        style={{ width: "min(75vw, 400px)" }}
+        style={{ minWidth: "min(75vw, 300px)" }}
       >
         <div className="p-4 flex flex-col h-full w-full">
           <div className="flex justify-between items-center border-b pb-2">
