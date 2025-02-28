@@ -45,7 +45,7 @@ export const Game = () => {
       <div className="flex flex-1 w-full items-center justify-center overflow-hidden">
         <img
           className="max-w-full max-h-full w-auto h-auto object-contain"
-          src={lifesToImage(gameState.lifes)}
+          src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
           alt="Max's hangman character"
         />
       </div>
