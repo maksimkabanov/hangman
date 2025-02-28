@@ -1,7 +1,6 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { gameSelector } from "./Game";
-import { Button } from "@mui/material";
 import {
   FAIL_COLOR,
   GRAY_COLOR,
