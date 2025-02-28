@@ -26,34 +26,31 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Backup and prepare deployment directory
+      - name: Backup old build
         run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-            if [ -d /var/www/hangman ]; then
-              mv /var/www/hangman /var/www/hangman_old_$(date +%Y%m%d%H%M%S)
+          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
+            cd /var/www/hangman &&
+            if [ -d build ]; then
+              mv build build_old_$(date +%Y%m%d%H%M%S)
             fi
-            mkdir -p /var/www/hangman
-          EOF
+            mkdir -p build"
 
-      - name: Ensure deployment directory is empty
+      - name: Ensure new build directory is empty
         run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-            if [ "$(ls -A /var/www/hangman)" ]; then
-              echo 'ERROR: /var/www/hangman is not empty!' && exit 1
-            fi
-          EOF
+          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
+            cd /var/www/hangman &&
+            if [ \"\$(ls -A build)\" ]; then
+              echo 'ERROR: build directory is not empty!' && exit 1
+            fi"
 
-      - name: Deploy via SCP
-        run: scp -r -i ~/.ssh/id_ed25519 build/* ubuntu@${{ secrets.SERVER_IP }}:/var/www/hangman/
+      - name: Deploy new build via SCP
+        run: scp -r -i ~/.ssh/id_ed25519 build/* ubuntu@${{ secrets.SERVER_IP }}:/var/www/hangman/build/
 
       - name: Restart Nginx
-        run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-            sudo systemctl restart nginx
-          EOF
+        run: ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "sudo systemctl restart nginx"
 
-      - name: Cleanup old deployments
+      - name: Cleanup old builds
         run: |
-          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-            ls -dt /var/www/hangman_old_* | tail -n +6 | xargs rm -rf || true
-          EOF
+          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
+            cd /var/www/hangman &&
+            ls -dt build_old_* | tail -n +6 | xargs rm -rf || true"
