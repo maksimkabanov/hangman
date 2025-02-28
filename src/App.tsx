@@ -58,7 +58,7 @@ function App() {
         </div>
 
         {/* Stats (visible on large screens) */}
-        <div className="hidden md:flex border-left p-2 min-w-[300px] h-full justify-center">
+        <div className="hidden md:flex border-left p-2 min-w-[300px] h-full justify-center bg-gray-900 text-white">
           <Results />
         </div>
       </div>
