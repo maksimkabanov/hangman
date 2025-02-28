@@ -35,7 +35,21 @@ export const resultsSlice = createSlice({
       state: StateType,
       action: PayloadAction<LocalStorageItem>
     ) => {
-      state.results = action.payload.results;
+      const results = {} as { [gameId: string]: Result };
+
+      Object.values(action.payload.results).forEach((r) => {
+        if (
+          r.word &&
+          r.question &&
+          r.gameId &&
+          r.lettersUsed &&
+          r.startTimestamp
+        ) {
+          results[r.gameId] = r;
+        }
+      });
+
+      state.results = results;
     },
   },
 });
