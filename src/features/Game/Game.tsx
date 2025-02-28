@@ -23,7 +23,7 @@ export const Game = () => {
       <GameWord />
       <LettersBoard />
       <div className="w-full flex flex-row p-1">
-        {gameState.success || (gameState.fail && <NewGameButton />)}
+        {(gameState.success || gameState.fail) && <NewGameButton />}
         <div className="ml-auto"></div>
         <span>Lifes left: {gameState.lifes}</span>
       </div>

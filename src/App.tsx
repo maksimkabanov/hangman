@@ -14,6 +14,12 @@ function App() {
 
   React.useEffect(() => {
     dispatch(restoreResultesFromStorage());
+
+    // Prevent body scrolling
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [dispatch]);
 
   const onResetAllClick = () => {
@@ -21,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center h-[100dvh] w-full">
+    <div className="fixed inset-0 flex flex-col items-center w-full h-[100svh] overflow-hidden">
       {/* Header */}
       <div className="flex flex-row items-center text-gray-300 border-bottom w-full">
         <IconButton onClick={onResetAllClick} color="inherit">
@@ -40,23 +46,23 @@ function App() {
       </div>
 
       {/* Main layout (game + stats) */}
-      <div className="flex flex-1 w-full h-full overflow-hidden">
+      <div className="flex flex-1 w-full h-full">
         {/* Game area */}
-        <div className="flex flex-col flex-1 min-w-[400px] p-2 h-full max-h-[100dvh] overflow-y-auto">
-          <div className="flex-1">
+        <div className="flex flex-col flex-1 min-w-[400px] p-2 overflow-hidden">
+          <div className="flex-1 overflow-auto">
             <Game />
           </div>
         </div>
 
         {/* Stats (visible on large screens) */}
-        <div className="hidden md:flex border-left p-2 min-w-[400px] h-full max-h-[100dvh] overflow-y-auto justify-center">
+        <div className="hidden md:flex border-left p-2 min-w-[400px] h-full justify-center">
           <Results />
         </div>
       </div>
 
       {/* Sidebar for smaller screens */}
       <div
-        className={`fixed top-0 right-0 h-[100dvh] bg-gray-900 text-white shadow-md transform ${
+        className={`fixed top-0 right-0 h-full bg-gray-900 text-white shadow-md transform ${
           showSidebar ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out md:hidden overflow-y-auto flex justify-center`}
         style={{ width: "min(75vw, 400px)" }}
@@ -66,7 +72,7 @@ function App() {
             <span className="text-lg font-semibold">Statistics</span>
             <Button onClick={() => setShowSidebar(false)}>Close</Button>
           </div>
-          <div className="flex-1 overflow-auto p-2 flex justify-center">
+          <div className="flex-1 overflow-auto flex justify-center">
             <Results />
           </div>
         </div>
