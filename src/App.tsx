@@ -53,7 +53,7 @@ function App() {
             <Game />
           </div>
           <div className="absolute bottom-0 left-0 text-gray-200">
-            Version: 0.1.2
+            Version: 0.1.3
           </div>
         </div>
 
