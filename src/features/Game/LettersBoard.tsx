@@ -9,6 +9,7 @@ import {
   SUCCESS_COLOR,
 } from "../../constants";
 import { guessLetter } from "../../actions";
+import { LetterButton } from "../../components/LetterButton";
 
 export const LettersBoard = () => {
   const dispatch = useAppDispatch();
@@ -37,21 +38,14 @@ export const LettersBoard = () => {
             : FAIL_COLOR
           : GRAY_COLOR;
         return (
-          <Button
+          <LetterButton
             key={letter}
-            className="letter-button"
-            onClick={() => onGuessLetterClick(letter)}
             disabled={gameIsDone || letterUsed}
-            sx={{
-              "&.Mui-disabled": {
-                backgroundColor: letterDisabledColor,
-                color: "black",
-                fontWeight: 700,
-              },
-            }}
+            onClick={() => onGuessLetterClick(letter)}
+            backgroundColor={letterDisabledColor}
           >
             {letter.toUpperCase()}
-          </Button>
+          </LetterButton>
         );
       })}
     </div>

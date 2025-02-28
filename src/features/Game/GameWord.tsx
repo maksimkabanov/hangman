@@ -1,9 +1,9 @@
 import React from "react";
 import { useAppSelector } from "../../store";
 import { gameSelector } from "./Game";
-import { Button } from "@mui/material";
 import clsx from "clsx";
 import { FAIL_COLOR, SUCCESS_COLOR } from "../../constants";
+import { LetterButton } from "../../components/LetterButton"; // Import new button
 
 export const GameWord = () => {
   const gameState = useAppSelector(gameSelector);
@@ -28,21 +28,15 @@ export const GameWord = () => {
           : gameIsDone
           ? FAIL_COLOR
           : "white";
+
         return (
-          <Button
+          <LetterButton
             key={index}
-            className="letter-button"
             disabled={true}
-            sx={{
-              "&.Mui-disabled": {
-                backgroundColor: letterDisabledColor,
-                color: "black",
-                fontWeight: 700,
-              },
-            }}
+            backgroundColor={letterDisabledColor}
           >
             {gameIsDone || letterUsed ? letter.toUpperCase() : "_"}
-          </Button>
+          </LetterButton>
         );
       })}
     </div>
