@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Game } from "./features/Game/Game";
 import { Results } from "./features/Results/Results";
@@ -8,21 +8,23 @@ import { Button } from "@mui/material";
 
 function App() {
   const dispatch = useAppDispatch();
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(restoreResultesFromStorage());
-  });
+  }, [dispatch]);
 
   const onResetAllClick = () => {
     dispatch(resetAll());
   };
 
   return (
-    <div className="flex flex-col items-center h-full w-full">
+    <div className="flex flex-col items-center h-full w-full relative">
       <div className="text-gray-300 border-bottom w-full text-center p-2">
         Hello in Hangman by Maksim!
       </div>
-      <div className="flex flex-row flex-1 h-full w-full">
+
+      <div className="flex flex-1 w-full h-full">
         <div className="flex flex-col flex-1 min-w-[400px] p-2 h-full">
           <div className="flex-1">
             <Game />
@@ -30,10 +32,31 @@ function App() {
           <div className="flex flex-row">
             <div className="ml-auto"></div>
             <Button onClick={onResetAllClick}>Reset all</Button>
+            <Button className="lg:hidden" onClick={() => setShowSidebar(true)}>
+              Stats
+            </Button>
           </div>
         </div>
-        <div className="border-left p-2 min-w-[400px] h-full">
+
+        <div className="hidden lg:flex border-left p-2 min-w-[400px] h-full justify-center">
           <Results />
+        </div>
+      </div>
+
+      <div
+        className={`fixed top-0 right-0 h-full bg-gray-900 text-white shadow-lg transform ${
+          showSidebar ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out lg:hidden`}
+        style={{ width: "min(75vw, 400px)" }}
+      >
+        <div className="p-4 flex flex-col h-full">
+          <div className="flex justify-between items-center border-b pb-2">
+            <span className="text-lg font-semibold">Statistics</span>
+            <Button onClick={() => setShowSidebar(false)}>Close</Button>
+          </div>
+          <div className="flex-1 overflow-auto p-2">
+            <Results />
+          </div>
         </div>
       </div>
     </div>

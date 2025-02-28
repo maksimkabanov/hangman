@@ -12,7 +12,7 @@ export const GameResult = ({ result }: { result: Result }) => {
   return (
     <div
       className={clsx(
-        "flex flex-col gap-1 w-[300px] p-2 border border-gray-200",
+        "flex flex-col gap-1 w-[300px] p-2 border border-gray-200 text-black",
         result.success && "bg-green-100",
         result.fail && "bg-red-100"
       )}
