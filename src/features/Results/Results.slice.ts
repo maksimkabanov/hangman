@@ -5,6 +5,18 @@ import { saveToLocalStorage } from "../../actions";
 
 export const resultsSelector = (state: RootState) => state.results;
 
+export const EMPTY_RESULT: Result = {
+  gameId: "",
+  lifes: 0,
+  question: "",
+  word: "",
+  lettersUsed: [],
+  success: false,
+  fail: false,
+  startTimestamp: 0,
+  endTimestamp: undefined,
+};
+
 const initialState = {
   results: {} as { [gameId: string]: Result },
 };

@@ -1,7 +1,7 @@
 import { appSlice } from "./app.slice";
 import { WODR_QUESTIONS_IDS, WODR_QUESTIONS_MAP } from "./constants";
 import { gameSlice } from "./features/Game/Game.slice";
-import { resultsSlice } from "./features/Results/Results.slice";
+import { EMPTY_RESULT, resultsSlice } from "./features/Results/Results.slice";
 import { AppDispatch, RootState } from "./store";
 import { LocalStorageItem, Result } from "./types";
 
@@ -84,6 +84,7 @@ export const resetAll =
   () => (dispatch: AppDispatch, _getState: () => RootState) => {
     dispatch(resultsSlice.actions.restoreResults({ results: {} }));
     dispatch(appSlice.actions.setGameId(undefined));
+    dispatch(gameSlice.actions.setResult(EMPTY_RESULT));
     saveToLocalStorage({ results: {} });
   };
 

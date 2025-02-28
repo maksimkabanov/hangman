@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Result } from "../../types";
 
-const initialState = {
+export const EMPTY_GAME = {
   gameId: undefined as string | undefined,
   lifes: 0,
   question: "",
@@ -10,6 +10,8 @@ const initialState = {
   success: false,
   fail: false,
 };
+
+const initialState = { ...EMPTY_GAME };
 
 type StateType = typeof initialState;
 

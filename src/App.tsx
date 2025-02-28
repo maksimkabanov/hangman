@@ -6,6 +6,7 @@ import { useAppDispatch } from "./store";
 import { resetAll, restoreResultesFromStorage } from "./actions";
 import { Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,8 +23,13 @@ function App() {
   return (
     <div className="flex flex-col items-center h-[100dvh] w-full">
       {/* Header */}
-      <div className="flex flex-row items-center text-gray-300 border-bottom w-full text-center">
-        <span className="mx-auto">Hello in Hangman by Maksim!</span>
+      <div className="flex flex-row items-center text-gray-300 border-bottom w-full">
+        <IconButton onClick={onResetAllClick} color="inherit">
+          <RestartAltIcon />
+        </IconButton>
+        <span className="mx-auto text-center flex-1">
+          Hello in Hangman by Maksim!
+        </span>
         <div className="ml-auto"></div>
         {/* Burger menu (visible only on small screens) */}
         <div className="hidden max-md:flex">
@@ -39,12 +45,6 @@ function App() {
         <div className="flex flex-col flex-1 min-w-[400px] p-2 h-full max-h-[100dvh] overflow-y-auto">
           <div className="flex-1">
             <Game />
-          </div>
-
-          {/* Bottom buttons (always visible) */}
-          <div className="flex flex-row sticky bottom-0 bg-white p-2 border-t">
-            <div className="ml-auto"></div>
-            <Button onClick={onResetAllClick}>Reset all</Button>
           </div>
         </div>
 
