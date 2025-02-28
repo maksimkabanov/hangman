@@ -22,9 +22,11 @@ export const Game = () => {
       </h2>
       <GameWord />
       <LettersBoard />
-      <h2 className="w-full text-right text-green-500">
-        Lifes left: {gameState.lifes}
-      </h2>
+      <div className="w-full flex flex-row p-1">
+        {gameState.success || (gameState.fail && <NewGameButton />)}
+        <div className="ml-auto"></div>
+        <span>Lifes left: {gameState.lifes}</span>
+      </div>
     </div>
   );
 };
