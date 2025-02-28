@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "tailwind": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
+    "tailwind": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
+    "postproduction": "git checkout production && git pull origin production && git reset --hard main && git push --force origin production && git checkout main"
   },
   "eslintConfig": {
     "extends": [
