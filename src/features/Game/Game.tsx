@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { RootState, useAppSelector } from "../../store";
 import { LettersBoard } from "./LettersBoard";
 import { GameWord } from "./GameWord";
+import { NewGameButton } from "../../components/NewGameButton";
 
 export const gameSelector = (state: RootState) => state.game;
 
@@ -12,8 +13,7 @@ export const Game = () => {
     <div className="w-full h-full flex flex-col items-center">{childs}</div>
   );
 
-  if (!gameState.gameId)
-    return getHost(<span>No current game. Start a new one!</span>);
+  if (!gameState.gameId) return getHost(<NewGameButton />);
 
   return (
     <div className="w-full h-full flex flex-col gap-2">
