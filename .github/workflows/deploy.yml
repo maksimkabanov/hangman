@@ -26,8 +26,34 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
+      - name: Backup and prepare deployment directory
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+            if [ -d /var/www/hangman ]; then
+              mv /var/www/hangman /var/www/hangman_old_$(date +%Y%m%d%H%M%S)
+            fi
+            mkdir -p /var/www/hangman
+          EOF
+
+      - name: Ensure deployment directory is empty
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+            if [ "$(ls -A /var/www/hangman)" ]; then
+              echo 'ERROR: /var/www/hangman is not empty!' && exit 1
+            fi
+          EOF
+
       - name: Deploy via SCP
         run: scp -r -i ~/.ssh/id_ed25519 build/* ubuntu@${{ secrets.SERVER_IP }}:/var/www/hangman/
 
       - name: Restart Nginx
-        run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "sudo systemctl restart nginx"
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+            sudo systemctl restart nginx
+          EOF
+
+      - name: Cleanup old deployments
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+            ls -dt /var/www/hangman_old_* | tail -n +6 | xargs rm -rf || true
+          EOF
