@@ -2,7 +2,6 @@ import React from "react";
 import { useAppSelector } from "../../store";
 import { gameSelector } from "./Game";
 import clsx from "clsx";
-import { FAIL_COLOR, SUCCESS_COLOR } from "../../constants";
 import { LetterButton } from "../../components/LetterButton"; // Import new button
 
 export const GameWord = () => {
@@ -23,17 +22,13 @@ export const GameWord = () => {
     >
       {gameState.word.map((letter, index) => {
         const letterUsed = isLetterUsed(letter);
-        const letterDisabledColor = letterUsed
-          ? SUCCESS_COLOR
-          : gameIsDone
-          ? FAIL_COLOR
-          : "white";
-
         return (
           <LetterButton
             key={index}
-            disabled={true}
-            backgroundColor={letterDisabledColor}
+            success={letterUsed}
+            fail={gameIsDone && !letterUsed}
+            hidden={!letterUsed && !gameIsDone}
+            gameOver={gameIsDone}
           >
             {gameIsDone || letterUsed ? letter.toUpperCase() : "_"}
           </LetterButton>

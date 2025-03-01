@@ -10,3 +10,22 @@
 .border-left {
   border-left: 1px solid #cccccc;
 }
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 1.5s infinite alternate;
+}
+
+body {
+  font-family: "Zen Kaku Gothic", sans-serif;
+}
