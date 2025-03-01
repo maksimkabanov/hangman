@@ -1,9 +1,9 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { gameSelector } from "./Game";
 import { LETTERS_ARRAY } from "../../constants";
 import { guessLetter } from "../../actions";
 import { LetterButton } from "../../components/LetterButton";
+import { gameSelector } from "../../selectors";
 
 export const LettersBoard = () => {
   const dispatch = useAppDispatch();

@@ -1,38 +1,11 @@
-import React, { ReactElement } from "react";
-import { RootState, useAppSelector } from "../../store";
+import React from "react";
+import { useAppSelector } from "../../store";
 import { LettersBoard } from "./LettersBoard";
 import { GameWord } from "./GameWord";
 import { NewGameButton } from "../../components/NewGameButton";
 import clsx from "clsx";
-
-enum gamePictures {
-  new = "images/anime-pers.png",
-  liles5 = "images/stages/5.png",
-  liles4 = "images/stages/4.png",
-  liles3 = "images/stages/3.png",
-  liles2 = "images/stages/2.png",
-  liles1 = "images/stages/1.png",
-  liles0 = "images/stages/0.png",
-}
-
-const lifesToImage = (lifes: number | undefined) => {
-  switch (lifes) {
-    case 5:
-      return gamePictures.liles5;
-    case 4:
-      return gamePictures.liles4;
-    case 3:
-      return gamePictures.liles3;
-    case 2:
-      return gamePictures.liles2;
-    case 1:
-      return gamePictures.liles1;
-    case 0:
-      return gamePictures.liles0;
-    default:
-      return gamePictures.new;
-  }
-};
+import { GameImg } from "./GameImg";
+import { gameSelector } from "../../selectors";
 
 const getLifesColor = (lifes: number) => {
   switch (lifes) {
@@ -53,14 +26,20 @@ const getLifesColor = (lifes: number) => {
   }
 };
 
-export const gameSelector = (state: RootState) => state.game;
-
 export const Game = () => {
   const gameState = useAppSelector(gameSelector);
 
-  const getHost = (childs?: ReactElement[] | ReactElement | undefined) => (
+  return (
     <div className="relative w-full h-full flex flex-col items-center">
-      {childs}
+      {!!gameState.gameId && (
+        <div className="flex flex-col items-center gap-2 p-2">
+          <h2 className="w-full text-center text-2xl text-blue-500">
+            {gameState.question}
+          </h2>
+          <GameWord />
+          <LettersBoard />
+        </div>
+      )}
       <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
         <div className="relative max-w-full max-h-full aspect-square">
           {gameState.gameId && (
@@ -73,11 +52,8 @@ export const Game = () => {
               {gameState.lifes}
             </div>
           )}
-          <img
-            className="max-w-full max-h-full"
-            src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
-            alt="Max's hangman character"
-          />
+
+          <GameImg />
           {!gameState.gameId && (
             <div className="absolute top-[13%] right-[5%]">
               <NewGameButton />
@@ -90,18 +66,6 @@ export const Game = () => {
           )}
         </div>
       </div>
-    </div>
-  );
-
-  if (!gameState.gameId) return getHost();
-
-  return getHost(
-    <div className="flex flex-col items-center gap-2 p-2">
-      <h2 className="w-full text-center text-2xl text-blue-500">
-        {gameState.question}
-      </h2>
-      <GameWord />
-      <LettersBoard />
     </div>
   );
 };

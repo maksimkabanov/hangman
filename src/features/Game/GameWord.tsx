@@ -1,8 +1,8 @@
 import React from "react";
 import { useAppSelector } from "../../store";
-import { gameSelector } from "./Game";
 import clsx from "clsx";
 import { LetterButton } from "../../components/LetterButton"; // Import new button
+import { gameSelector } from "../../selectors";
 
 export const GameWord = () => {
   const gameState = useAppSelector(gameSelector);

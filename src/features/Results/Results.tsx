@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { GameResult } from "./GameResult";
-import { resultsSelector } from "./Results.slice";
 import { useAppSelector } from "../../store";
 import { CurrentGameResult } from "./CurrentGameResult";
 import { NewGameButton } from "../../components/NewGameButton";
 import { appSelector } from "../../app.slice";
+import { resultsSelector } from "../../selectors";
 
 export const Results = () => {
   const resultsState = useAppSelector(resultsSelector);

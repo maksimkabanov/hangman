@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LocalStorageItem, Result } from "../../types";
-import { RootState } from "../../store";
 import { saveToLocalStorage } from "../../actions";
-
-export const resultsSelector = (state: RootState) => state.results;
 
 export const EMPTY_RESULT: Result = {
   gameId: "",
