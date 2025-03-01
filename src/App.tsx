@@ -49,12 +49,12 @@ function App() {
       {/* Main layout (game + stats) */}
       <div className="flex flex-1 w-full h-full overflow-hidden">
         {/* Game area */}
-        <div className="flex flex-col flex-1 min-w-[400px] p-2 overflow-hidden">
-          <div className="flex-1 overflow-y-auto pb-4">
+        <div className="flex flex-col flex-1 min-w-[400px] overflow-hidden">
+          <div className="flex-1 overflow-y-auto">
             <Game />
           </div>
           <div className="absolute bottom-2 left-2 text-gray-200 text-sm">
-            Version: 0.1.13
+            Version: 0.1.14
           </div>
         </div>
 

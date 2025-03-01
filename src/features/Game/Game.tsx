@@ -60,7 +60,7 @@ export const Game = () => {
   const gameState = useAppSelector(gameSelector);
 
   const getHost = (childs?: ReactElement[] | ReactElement | undefined) => (
-    <div className="relative w-full h-full flex flex-col items-center gap-2">
+    <div className="relative w-full h-full flex flex-col items-center gap-2 p-2">
       {childs}
       <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
         <div className="relative max-w-full max-h-full aspect-square">
