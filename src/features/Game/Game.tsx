@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { RootState, useAppSelector } from "../../store";
 import { LettersBoard } from "./LettersBoard";
 import { GameWord } from "./GameWord";
@@ -63,11 +63,6 @@ export const Game = () => {
       {childs}
       <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
         <div className="relative max-w-full max-h-full aspect-square">
-          {!gameState.gameId && (
-            <div className="absolute top-[13%] right-[5%]">
-              <NewGameButton />
-            </div>
-          )}
           {gameState.gameId && (
             <div
               className={clsx(
@@ -83,6 +78,16 @@ export const Game = () => {
             src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
             alt="Max's hangman character"
           />
+          {!gameState.gameId && (
+            <div className="absolute top-[13%] right-[5%]">
+              <NewGameButton />
+            </div>
+          )}
+          {(gameState.success || gameState.fail) && (
+            <div className="absolute top-[13%] left-0">
+              <NewGameButton />
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -97,11 +102,6 @@ export const Game = () => {
       </h2>
       <GameWord />
       <LettersBoard />
-      <div className="relative w-full flex flex-row p-1">
-        <div className="absolute bottom-[-20] left-20">
-          {(gameState.success || gameState.fail) && <NewGameButton />}
-        </div>
-      </div>
     </div>
   );
 };

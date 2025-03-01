@@ -21,20 +21,16 @@ export const LetterButton: React.FC<LetterButtonProps> = ({
   const buttonStyles = `
     relative w-10 h-10 sm:w-14 sm:h-14 text-lg sm:text-2xl font-extrabold flex items-center justify-center 
     rounded-lg shadow-lg transition-all border-2 
-    ${
-      success
-        ? "bg-green-600 text-white border-green-400 shadow-green-400/50"
-        : ""
-    }
-    ${fail ? "bg-red-600 text-white border-red-400 shadow-red-400/50" : ""}
+    ${success ? "bg-green-600 text-white border-green-400" : ""}
+    ${fail ? "bg-red-600 text-white border-red-400" : ""}
     ${
       hidden
-        ? "bg-gradient-to-br from-blue-700 to-blue-900 text-blue-300 border-blue-500 shadow-blue-500/50"
+        ? "bg-gradient-to-br from-blue-300 to-blue-700 text-white border-blue-500"
         : ""
     }
     ${
       !success && !fail && !hidden && !gameOver
-        ? "bg-black text-white border-gray-500 shadow-gray-500/50"
+        ? "bg-black text-white border-gray-500"
         : ""
     }
     ${

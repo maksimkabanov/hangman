@@ -12,9 +12,7 @@ export const NewGameButton = () => {
   return (
     <button
       onClick={onNewGameClick}
-      className="flex items-center gap-2 px-2 py-1 bg-white text-green-800 
-                 rounded-lg shadow-md transition-all 
-                 hover:shadow-lg active:scale-95"
+      className="flex items-center gap-2 px-2 py-1 bg-white text-green-800 rounded-lg"
     >
       <img
         src="images/anime-pers.png"
