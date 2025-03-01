@@ -26,31 +26,30 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Backup old build
+      - name: Prepare new build directory
+        run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "mkdir -p /var/www/hangman/build_new"
+
+      - name: Deploy new build via SCP
+        run: scp -r -i ~/.ssh/id_ed25519 build/* ubuntu@${{ secrets.SERVER_IP }}:/var/www/hangman/build_new/
+
+      - name: Atomically swap build folders
         run: |
-          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
             cd /var/www/hangman &&
             if [ -d build ]; then
               mv build build_old_$(date +%Y%m%d%H%M%S)
             fi
-            mkdir -p build"
+            mv build_new build
+          "
 
-      - name: Ensure new build directory is empty
-        run: |
-          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
-            cd /var/www/hangman &&
-            if [ \"\$(ls -A build)\" ]; then
-              echo 'ERROR: build directory is not empty!' && exit 1
-            fi"
+      - name: Set correct permissions
+        run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "sudo chown -R www-data:www-data /var/www/hangman/build && sudo chmod -R 755 /var/www/hangman/build"
 
-      - name: Deploy new build via SCP
-        run: scp -r -i ~/.ssh/id_ed25519 build/* ubuntu@${{ secrets.SERVER_IP }}:/var/www/hangman/build/
-
-      - name: Restart Nginx
-        run: ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "sudo systemctl restart nginx"
+      #- name: Restart Nginx (optional, only if needed)
+      #  run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "sudo systemctl restart nginx"
 
       - name: Cleanup old builds
         run: |
-          ssh -t -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
+          ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "
             cd /var/www/hangman &&
             ls -dt build_old_* | tail -n +6 | xargs rm -rf || true"
