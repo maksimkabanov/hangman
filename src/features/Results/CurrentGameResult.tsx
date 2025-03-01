@@ -14,7 +14,7 @@ export const CurrentGameResult = () => {
     : undefined;
 
   if (currentResult && !currentResult.fail && !currentResult.success) {
-    return <GameResult result={currentResult} />;
+    return <GameResult result={currentResult} isCurrent={true} />;
   }
 
   return <NewGameButton />;
