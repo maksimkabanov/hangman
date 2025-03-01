@@ -16,7 +16,6 @@ enum gamePictures {
 }
 
 const lifesToImage = (lifes: number | undefined) => {
-  console.log("lifes", lifes);
   switch (lifes) {
     case 5:
       return gamePictures.liles5;
@@ -60,7 +59,7 @@ export const Game = () => {
   const gameState = useAppSelector(gameSelector);
 
   const getHost = (childs?: ReactElement[] | ReactElement | undefined) => (
-    <div className="relative w-full h-full flex flex-col items-center gap-2 p-2">
+    <div className="relative w-full h-full flex flex-col items-center">
       {childs}
       <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
         <div className="relative max-w-full max-h-full aspect-square">
@@ -92,7 +91,7 @@ export const Game = () => {
   if (!gameState.gameId) return getHost();
 
   return getHost(
-    <Fragment>
+    <div className="flex flex-col items-center gap-2 p-2">
       <h2 className="w-full text-center text-2xl text-blue-500">
         {gameState.question}
       </h2>
@@ -103,6 +102,6 @@ export const Game = () => {
           {(gameState.success || gameState.fail) && <NewGameButton />}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
