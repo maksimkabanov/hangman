@@ -26,6 +26,9 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
+      - name: Cleanup old build_new directory
+        run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "rm -rf /var/www/hangman/build_new"
+
       - name: Prepare new build directory
         run: ssh -i ~/.ssh/id_ed25519 ubuntu@${{ secrets.SERVER_IP }} "mkdir -p /var/www/hangman/build_new"
 
