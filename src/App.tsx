@@ -14,11 +14,6 @@ function App() {
 
   React.useEffect(() => {
     dispatch(restoreResultesFromStorage());
-    // Prevent body scrolling
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
   }, [dispatch]);
 
   const onResetAllClick = () => {
@@ -26,18 +21,20 @@ function App() {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center w-full min-h-screen overflow-hidden">
+    <div className="fixed inset-0 flex flex-col items-center w-full h-[100svh] min-h-[100dvh] overflow-hidden">
       {/* Header */}
       <div className="flex flex-row items-center text-gray-300 border-b w-full">
-        <IconButton onClick={onResetAllClick} color="inherit">
-          <RestartAltIcon />
-        </IconButton>
+        <div className="text-red-100">
+          <IconButton onClick={onResetAllClick} color="inherit">
+            <RestartAltIcon />
+          </IconButton>
+        </div>
         <span className="mx-auto text-center flex-1">
           Hello in Hangman by Maksim!
         </span>
         <div className="ml-auto"></div>
         {/* Burger menu (visible only on small screens) */}
-        <div className="hidden max-md:flex">
+        <div className="hidden max-md:flex text-blue-700">
           <IconButton onClick={() => setShowSidebar(true)} color="inherit">
             <MenuIcon />
           </IconButton>
@@ -52,7 +49,7 @@ function App() {
             <Game />
           </div>
           <div className="absolute bottom-2 left-2 text-gray-200 text-sm">
-            Version: 0.1.11
+            Version: 0.1.12
           </div>
         </div>
 
