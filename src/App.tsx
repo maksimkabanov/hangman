@@ -14,6 +14,11 @@ function App() {
 
   React.useEffect(() => {
     dispatch(restoreResultesFromStorage());
+    // Prevent body scrolling
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [dispatch]);
 
   const onResetAllClick = () => {
@@ -47,7 +52,7 @@ function App() {
             <Game />
           </div>
           <div className="absolute bottom-2 left-2 text-gray-200 text-sm">
-            Version: 0.1.8
+            Version: 0.1.9
           </div>
         </div>
 

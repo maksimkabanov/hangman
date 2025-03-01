@@ -59,25 +59,27 @@ export const gameSelector = (state: RootState) => state.game;
 export const Game = () => {
   const gameState = useAppSelector(gameSelector);
 
-  const getHost = (childs: ReactElement[] | ReactElement) => (
+  const getHost = (childs?: ReactElement[] | ReactElement | undefined) => (
     <div className="relative w-full h-full flex flex-col items-center gap-2">
       {childs}
-      <div className="flex flex-1 w-full items-center justify-center overflow-hidden">
-        <img
-          className="max-w-full max-h-full w-auto h-auto object-contain"
-          src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
-          alt="Max's hangman character"
-        />
+      <div className="relative flex flex-1 w-full items-center justify-center overflow-hidden">
+        <div className="relative max-w-full max-h-full w-auto h-auto object-contain">
+          {!gameState.gameId && (
+            <div className="absolute top-[50px] right-[10px]">
+              <NewGameButton />
+            </div>
+          )}
+          <img
+            className="max-w-full max-h-full w-auto h-auto object-contain"
+            src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
+            alt="Max's hangman character"
+          />
+        </div>
       </div>
     </div>
   );
 
-  if (!gameState.gameId)
-    return getHost(
-      <div className="absolute top-[100px] right-[100px]">
-        <NewGameButton />
-      </div>
-    );
+  if (!gameState.gameId) return getHost();
 
   return getHost(
     <Fragment>
