@@ -65,14 +65,14 @@ export const Game = () => {
       <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
         <div className="relative max-w-full max-h-full aspect-square">
           {!gameState.gameId && (
-            <div className="absolute top-[100px] right-[50px]">
+            <div className="absolute top-[13%] right-[5%]">
               <NewGameButton />
             </div>
           )}
           {gameState.gameId && (
             <div
               className={clsx(
-                "absolute top-[20px] right-[20px] text-4xl",
+                "absolute top-[10%] right-0 text-4xl",
                 getLifesColor(gameState.lifes)
               )}
             >
