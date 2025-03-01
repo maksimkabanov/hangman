@@ -3,6 +3,7 @@ import { RootState, useAppSelector } from "../../store";
 import { LettersBoard } from "./LettersBoard";
 import { GameWord } from "./GameWord";
 import { NewGameButton } from "../../components/NewGameButton";
+import clsx from "clsx";
 
 enum gamePictures {
   new = "images/anime-pers.png",
@@ -34,13 +35,32 @@ const lifesToImage = (lifes: number | undefined) => {
   }
 };
 
+const getLifesColor = (lifes: number) => {
+  switch (lifes) {
+    case 5:
+      return "text-green-400 shadow-green-400 drop-shadow-md";
+    case 4:
+      return "text-lime-400 shadow-lime-400 drop-shadow-md";
+    case 3:
+      return "text-yellow-400 shadow-yellow-400 drop-shadow-md";
+    case 2:
+      return "text-orange-400 shadow-orange-400 drop-shadow-md";
+    case 1:
+      return "text-red-400 shadow-red-400 drop-shadow-md";
+    case 0:
+      return "text-black shadow-black drop-shadow-md";
+    default:
+      return "text-black shadow-black drop-shadow-md";
+  }
+};
+
 export const gameSelector = (state: RootState) => state.game;
 
 export const Game = () => {
   const gameState = useAppSelector(gameSelector);
 
   const getHost = (childs: ReactElement[] | ReactElement) => (
-    <div className="w-full h-full flex flex-col items-center gap-2">
+    <div className="relative w-full h-full flex flex-col items-center gap-2">
       {childs}
       <div className="flex flex-1 w-full items-center justify-center overflow-hidden">
         <img
@@ -52,7 +72,12 @@ export const Game = () => {
     </div>
   );
 
-  if (!gameState.gameId) return getHost(<NewGameButton />);
+  if (!gameState.gameId)
+    return getHost(
+      <div className="absolute top-[100px] right-[100px]">
+        <NewGameButton />
+      </div>
+    );
 
   return getHost(
     <Fragment>
@@ -61,10 +86,19 @@ export const Game = () => {
       </h2>
       <GameWord />
       <LettersBoard />
-      <div className="w-full flex flex-row p-1">
-        {(gameState.success || gameState.fail) && <NewGameButton />}
+      <div className="relative w-full flex flex-row p-1">
+        <div className="absolute bottom-[-20] left-20">
+          {(gameState.success || gameState.fail) && <NewGameButton />}
+        </div>
         <div className="ml-auto"></div>
-        <span>Lifes left: {gameState.lifes}</span>
+        <div
+          className={clsx(
+            "absolute bottom-[-20] right-20 text-4xl",
+            getLifesColor(gameState.lifes)
+          )}
+        >
+          {gameState.lifes}
+        </div>
       </div>
     </Fragment>
   );

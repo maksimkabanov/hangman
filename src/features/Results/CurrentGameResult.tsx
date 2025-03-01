@@ -3,7 +3,6 @@ import { appSelector } from "../../app.slice";
 import { resultsSelector } from "./Results.slice";
 import { useAppSelector } from "../../store";
 import { GameResult } from "./GameResult";
-import { NewGameButton } from "../../components/NewGameButton";
 
 export const CurrentGameResult = () => {
   const appState = useAppSelector(appSelector);
@@ -17,5 +16,5 @@ export const CurrentGameResult = () => {
     return <GameResult result={currentResult} isCurrent={true} />;
   }
 
-  return <NewGameButton />;
+  return null;
 };

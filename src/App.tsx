@@ -21,9 +21,9 @@ function App() {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center w-full h-[100svh] overflow-hidden">
+    <div className="fixed inset-0 flex flex-col items-center w-full min-h-screen overflow-hidden">
       {/* Header */}
-      <div className="flex flex-row items-center text-gray-300 border-bottom w-full">
+      <div className="flex flex-row items-center text-gray-300 border-b w-full">
         <IconButton onClick={onResetAllClick} color="inherit">
           <RestartAltIcon />
         </IconButton>
@@ -40,19 +40,19 @@ function App() {
       </div>
 
       {/* Main layout (game + stats) */}
-      <div className="flex flex-1 w-full h-full">
+      <div className="flex flex-1 w-full h-full overflow-hidden">
         {/* Game area */}
         <div className="flex flex-col flex-1 min-w-[400px] p-2 overflow-hidden">
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-y-auto pb-4">
             <Game />
           </div>
-          <div className="absolute bottom-0 left-0 text-gray-200">
-            Version: 0.1.7
+          <div className="absolute bottom-2 left-2 text-gray-200 text-sm">
+            Version: 0.1.8
           </div>
         </div>
 
         {/* Stats (visible on large screens) */}
-        <div className="hidden md:flex border-left p-2 min-w-[300px] h-full justify-center bg-gray-900 text-white">
+        <div className="hidden md:flex border-l p-2 min-w-[300px] h-full justify-center bg-gray-900 text-white">
           <Results />
         </div>
       </div>
@@ -69,7 +69,7 @@ function App() {
             <span className="text-lg font-semibold">Statistics</span>
             <Button onClick={() => setShowSidebar(false)}>Close</Button>
           </div>
-          <div className="flex-1 overflow-auto flex justify-center">
+          <div className="flex-1 overflow-y-auto flex justify-center pb-4">
             <Results />
           </div>
         </div>

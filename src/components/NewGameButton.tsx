@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@mui/material";
 import { useAppDispatch } from "../store";
 import { startNewGame } from "../actions";
 
@@ -11,8 +10,18 @@ export const NewGameButton = () => {
   };
 
   return (
-    <Button onClick={onNewGameClick} color="success">
-      New game
-    </Button>
+    <button
+      onClick={onNewGameClick}
+      className="flex items-center gap-2 px-2 py-1 bg-white text-green-800 
+                 rounded-lg shadow-md transition-all 
+                 hover:shadow-lg active:scale-95"
+    >
+      <img
+        src="images/anime-pers.png"
+        alt="new game"
+        className="w-[20px] ratio-square"
+      ></img>
+      <span className="font-medium">New Game</span>
+    </button>
   );
 };
