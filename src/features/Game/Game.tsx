@@ -62,15 +62,25 @@ export const Game = () => {
   const getHost = (childs?: ReactElement[] | ReactElement | undefined) => (
     <div className="relative w-full h-full flex flex-col items-center gap-2">
       {childs}
-      <div className="relative flex flex-1 w-full items-center justify-center overflow-hidden">
-        <div className="relative max-w-full max-h-full w-auto h-auto object-contain">
+      <div className="relative flex flex-1 w-full overflow-hidden items-center justify-center">
+        <div className="relative max-w-full max-h-full aspect-square">
           {!gameState.gameId && (
-            <div className="absolute top-[50px] right-[10px]">
+            <div className="absolute top-[100px] right-[50px]">
               <NewGameButton />
             </div>
           )}
+          {gameState.gameId && (
+            <div
+              className={clsx(
+                "absolute top-[20px] right-[20px] text-4xl",
+                getLifesColor(gameState.lifes)
+              )}
+            >
+              {gameState.lifes}
+            </div>
+          )}
           <img
-            className="max-w-full max-h-full w-auto h-auto object-contain"
+            className="max-w-full max-h-full"
             src={lifesToImage(gameState.gameId ? gameState.lifes : undefined)}
             alt="Max's hangman character"
           />
@@ -91,15 +101,6 @@ export const Game = () => {
       <div className="relative w-full flex flex-row p-1">
         <div className="absolute bottom-[-20] left-20">
           {(gameState.success || gameState.fail) && <NewGameButton />}
-        </div>
-        <div className="ml-auto"></div>
-        <div
-          className={clsx(
-            "absolute bottom-[-20] right-20 text-4xl",
-            getLifesColor(gameState.lifes)
-          )}
-        >
-          {gameState.lifes}
         </div>
       </div>
     </Fragment>
